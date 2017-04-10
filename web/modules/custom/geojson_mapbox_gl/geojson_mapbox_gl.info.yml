@@ -1,0 +1,6 @@
+name: GeoJSON Mapbox GL
+description: Longtext filled with GeoJSON Field formatter
+package: Geo
+type: module
+version: '8.x-0.1'
+core: '8.x'
