@@ -1,0 +1,14 @@
+formatter:
+  version: VERSION
+  js:
+    /libraries/geojson-bbox/dist/geojson-bbox.js: {}
+    /libraries/mapbox-gl-js/dist/mapbox-gl.js: {}
+    js/geojson-mapbox-formatter.js: {}
+  css:
+    component:
+      /libraries/mapbox-gl-js/dist/mapbox-gl.css: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery.once

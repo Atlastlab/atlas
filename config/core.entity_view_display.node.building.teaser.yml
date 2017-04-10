@@ -1,0 +1,20 @@
+uuid: 08de92dd-644d-49a3-b6a7-e0cb09190dc6
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.building.field_geojson
+    - node.type.building
+  module:
+    - user
+id: node.building.teaser
+targetEntityType: node
+bundle: building
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_geojson: true

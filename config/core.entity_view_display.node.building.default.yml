@@ -1,0 +1,27 @@
+uuid: 92e40d77-28cc-480a-9c6f-df6447e22386
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.building.field_geojson
+    - node.type.building
+  module:
+    - user
+id: node.building.default
+targetEntityType: node
+bundle: building
+mode: default
+content:
+  field_geojson:
+    weight: 101
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

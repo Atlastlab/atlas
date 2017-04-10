@@ -1,13 +1,21 @@
 module:
   block: 0
   breakpoint: 0
+  datetime: 0
   dblog: 0
   dynamic_page_cache: 0
   field: 0
+  field_ui: 0
+  file: 0
   filter: 0
+  geojson_mapbox_gl: 0
+  image: 0
+  link: 0
   node: 0
+  options: 0
   page_cache: 0
   system: 0
+  telephone: 0
   text: 0
   toolbar: 0
   user: 0

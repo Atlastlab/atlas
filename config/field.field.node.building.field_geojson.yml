@@ -1,0 +1,19 @@
+uuid: eb01caaf-dd3f-4a88-969e-cdb0de525639
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_geojson
+    - node.type.building
+id: node.building.field_geojson
+field_name: field_geojson
+entity_type: node
+bundle: building
+label: GeoJSON
+description: 'Paste here the GeoJSON that defines the shape of the building.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

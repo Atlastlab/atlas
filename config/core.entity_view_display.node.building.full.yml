@@ -1,0 +1,29 @@
+uuid: 00e43f93-61ad-449c-8473-2cb72718e493
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.full
+    - field.field.node.building.field_geojson
+    - node.type.building
+  module:
+    - geojson_mapbox_gl
+    - user
+id: node.building.full
+targetEntityType: node
+bundle: building
+mode: full
+content:
+  field_geojson:
+    weight: 101
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: geojson_mapbox_gl
+    region: content
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

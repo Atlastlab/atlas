@@ -1,0 +1,11 @@
+uuid: bf8040d7-30b3-435a-99c3-9f28954c4a5b
+langcode: en
+status: true
+dependencies: {  }
+name: Building
+type: building
+description: 'A building when published is visible on the map.'
+help: ''
+new_revision: true
+preview_mode: 0
+display_submitted: false
