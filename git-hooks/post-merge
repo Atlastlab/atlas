@@ -1,0 +1,19 @@
+#/usr/bin/env bash
+exec < /dev/tty
+
+while true; do
+  read -p "Do you want to run drush cim? (Y/n) " yn
+  if [ "$yn" = "" ]; then
+    yn='Y'
+  fi
+  case $yn in
+      [Yy] )
+        cd web;
+        DRUSH_OUTPUT=$(drush cim --quiet --yes);
+        break;;
+      [Nn] )
+        exit;;
+      * )
+        echo "Please answer y or n for yes or no.";;
+  esac
+done
