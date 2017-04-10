@@ -1,0 +1,12 @@
+uuid: 072ab084-80fc-494e-810a-c5a59206c436
+langcode: en
+status: true
+dependencies: {  }
+id: text
+label: Text
+description: 'A piece of text.'
+type: generic
+queue_thumbnail_downloads: false
+new_revision: true
+type_configuration: {  }
+field_map: {  }

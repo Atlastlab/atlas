@@ -1,16 +1,25 @@
 module:
+  atlas_media: 0
   block: 0
   breakpoint: 0
+  bricks: 0
+  bricks_inline: 0
+  ckeditor: 0
   datetime: 0
   dblog: 0
   dynamic_page_cache: 0
+  editor: 0
+  entity: 0
   field: 0
   field_ui: 0
   file: 0
   filter: 0
   geojson_mapbox_gl: 0
   image: 0
+  inline_entity_form: 0
   link: 0
+  media_entity: 0
+  media_entity_image: 0
   node: 0
   options: 0
   page_cache: 0
@@ -19,6 +28,7 @@ module:
   text: 0
   toolbar: 0
   user: 0
+  views: 0
   minimal: 1000
 theme:
   stable: 0

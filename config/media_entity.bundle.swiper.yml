@@ -1,0 +1,12 @@
+uuid: 64b7be00-e9d5-493b-b626-938bc0d5d424
+langcode: en
+status: true
+dependencies: {  }
+id: swiper
+label: Swiper
+description: 'Use this one if you want to have swipeable areas.'
+type: generic
+queue_thumbnail_downloads: false
+new_revision: false
+type_configuration: {  }
+field_map: {  }

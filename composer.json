@@ -23,6 +23,8 @@
         "drupal/bricks": "^1.4",
         "drupal/console": "~1.0",
         "drupal/core": "~8.0",
+        "drupal/inline_entity_form": "^1.0@beta",
+        "drupal/media_entity_image": "^1.2",
         "drush/drush": "~8.0",
         "webflo/drupal-finder": "^0.2.1",
         "webmozart/path-util": "^2.3"

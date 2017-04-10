@@ -1,0 +1,22 @@
+uuid: c8863426-3633-411e-a7d5-fda7d688dd1e
+langcode: en
+status: true
+dependencies:
+  config:
+    - media_entity.bundle.swiper
+id: media.swiper.default
+targetEntityType: media
+bundle: swiper
+mode: default
+content:
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  uid: true

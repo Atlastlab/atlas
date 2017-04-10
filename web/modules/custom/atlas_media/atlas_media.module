@@ -1,0 +1,60 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Render\Element;
+
+
+/**
+ * Implements hook_field_widget_form_alter().
+ */
+function atlas_media_field_widget_form_alter(&$element, FormStateInterface $form_state, $context) {
+  $field_name = $context['items']->getName();
+  $media_bundles_without_title = ['text'];
+
+  if ($field_name == 'name') {
+    $build_info = $form_state->getBuildInfo();
+    if (isset($build_info['callback_object']->entity) && in_array($build_info['callback_object']->entity->bundle(), $media_bundles_without_title) || isset($context['form']['#bundle']) && in_array($context['form']['#bundle'], $media_bundles_without_title)) {
+      $element['value']['#type'] = 'value';
+      if (!isset($element['value']['#default_value']) && !isset($element['value']['#value'])) {
+        $element['value']['#value'] = ' ';
+      }
+    }
+  }
+
+  if ($field_name == 'field_components') {
+    $element['#type'] = 'item';
+    $element['actions']['#type'] = 'fieldset';
+    foreach (Element::children($element['entities']) as $delta) {
+      hide($element['entities'][$delta]['options']['view_mode']);
+      hide($element['entities'][$delta]['options']['css_class']);
+
+      $element['#attached']['library'][] = 'atlas_media/bricks';
+
+      if (isset($element['entities'][$delta]['#entity']) && $element['entities'][$delta]['#entity']->bundle() == 'text') {
+        $element['entities'][$delta]['#label'] = atlas_media_get_title_from_text_field($element['entities'][$delta]['#entity']);
+      }
+    }
+  }
+}
+
+function atlas_media_get_title_from_text_field($text_entity) {
+  $text = $text_entity->field_text->value;
+  $cleaned_text = strip_tags($text);
+  $title = $cleaned_text;
+
+  if (count($cleaned_text) > 60) {
+    $title .= '...';
+  }
+
+  return $title;
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ */
+function atlas_media_media_presave(EntityInterface $entity) {
+  if ($entity->bundle() == 'text') {
+    $entity->name->value = atlas_media_get_title_from_text_field($entity);
+  }
+}

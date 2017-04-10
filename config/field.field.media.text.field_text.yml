@@ -1,0 +1,21 @@
+uuid: 860136f2-2622-4499-afc4-f6b2752f23f6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_text
+    - media_entity.bundle.text
+  module:
+    - text
+id: media.text.field_text
+field_name: field_text
+entity_type: media
+bundle: text
+label: Text
+description: 'Please enter your text. You can use the WYSIWYG editor to create fancy text.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,11 @@
+uuid: af8217d0-f962-4e4f-9d81-207ea4bbb81f
+langcode: en
+status: true
+dependencies: {  }
+name: 'Building page'
+type: building_page
+description: 'Show content in a popup when a building is clicked.'
+help: ''
+new_revision: true
+preview_mode: 0
+display_submitted: false

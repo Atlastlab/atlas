@@ -1,0 +1,21 @@
+uuid: f52a1b08-c7a4-49fb-9655-29dab8c5ccdf
+langcode: en
+status: true
+dependencies:
+  module:
+    - bricks
+    - media_entity
+    - node
+id: node.field_components
+field_name: field_components
+entity_type: node
+type: bricks
+settings:
+  target_type: media
+module: bricks
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

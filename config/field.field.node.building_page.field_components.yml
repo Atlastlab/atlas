@@ -1,0 +1,35 @@
+uuid: a8d19bbd-d7c3-4e13-b26a-2fa2488ce893
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_components
+    - media_entity.bundle.image
+    - media_entity.bundle.swiper
+    - media_entity.bundle.text
+    - node.type.building_page
+  module:
+    - bricks
+id: node.building_page.field_components
+field_name: field_components
+entity_type: node
+bundle: building_page
+label: Components
+description: 'With this field you can compose the content of the page.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+      swiper: swiper
+      text: text
+    sort:
+      field: name
+      direction: ASC
+    auto_create: 0
+    auto_create_bundle: image
+field_type: bricks

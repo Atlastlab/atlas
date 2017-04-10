@@ -1,0 +1,9 @@
+bricks:
+  version: VERSION
+  js:
+    js/bricks-nesting-validator.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery.once

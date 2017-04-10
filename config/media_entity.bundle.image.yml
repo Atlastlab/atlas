@@ -1,0 +1,16 @@
+uuid: 53450c4d-49f5-4a32-9014-c40ffd17821e
+langcode: en
+status: true
+dependencies:
+  module:
+    - media_entity_image
+id: image
+label: Image
+description: 'An image, a picture, a photo.'
+type: image
+queue_thumbnail_downloads: false
+new_revision: true
+type_configuration:
+  source_field: field_image
+  gather_exif: false
+field_map: {  }

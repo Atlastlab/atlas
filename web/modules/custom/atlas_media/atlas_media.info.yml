@@ -1,0 +1,6 @@
+name: Atlas Media
+description: Enhances the editor experience
+package: Atlas
+type: module
+version: '8.x-0.1'
+core: '8.x'
