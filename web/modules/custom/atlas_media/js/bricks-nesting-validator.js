@@ -8,6 +8,10 @@
                 var _isValidSwap = Drupal.tableDrag.prototype.row.prototype.isValidSwap;
 
                 Drupal.tableDrag.prototype.row.prototype.isValidSwap = function(tr) {
+                    if ($(tr).index() == 0) {
+                        this.interval.max = 0;
+                        return true;
+                    }
                     return  _isValidSwap.apply(this, arguments);
                 };
 
