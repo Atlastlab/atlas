@@ -22,16 +22,14 @@
                     var values = _validIndentInterval.apply(this, arguments);
                     var currentBundle = $(this.element).find('.inline-entity-form-media-bundle').text().trim();
                     var prevBundle = $(prevRow).find('.inline-entity-form-media-bundle').text().trim();
-                    // TODO get prev parent.
+                    var parentBundle = $(this.group[0]).prev('tr').find('.inline-entity-form-media-bundle').text().trim();
 
-                    if ($.inArray(prevBundle, hierachy[currentBundle]) !== -1) {
+                    if ($.inArray(prevBundle, hierachy[currentBundle]) !== -1 || $.inArray(parentBundle, hierachy[currentBundle]) !== -1) {
                         values.max = 1;
                     }
                     else {
                         values.max = 0;
                     }
-
-                    console.log(hierachy[currentBundle], prevBundle)
 
                     return values;
                 };
