@@ -9,6 +9,8 @@ use Drupal\Core\Render\Element;
  * Implements hook_field_widget_form_alter().
  */
 function atlas_media_field_widget_form_alter(&$element, FormStateInterface $form_state, $context) {
+  return;
+
   $field_name = $context['items']->getName();
   $media_bundles_without_title = ['text'];
 

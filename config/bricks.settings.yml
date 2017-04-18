@@ -1,0 +1,27 @@
+nesting:
+  media:
+    image:
+      swiper: swiper
+      image: 0
+      text: 0
+    swiper:
+      image: 0
+      swiper: 0
+      text: 0
+    text:
+      swiper: swiper
+      image: 0
+      text: 0
+  node:
+    building:
+      building: 0
+      building_page: 0
+      test: 0
+    building_page:
+      building: 0
+      building_page: 0
+      test: 0
+    test:
+      building: 0
+      building_page: 0
+      test: 0

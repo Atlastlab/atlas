@@ -11,7 +11,7 @@ _core:
 id: adminimal_theme_breadcrumbs
 theme: adminimal_theme
 region: breadcrumb
-weight: 0
+weight: -3
 provider: null
 plugin: system_breadcrumb_block
 settings:
