@@ -1,0 +1,10 @@
+uuid: 1c6523be-ef9c-4c02-bcfe-b160ec92058c
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.json
+label: JSON
+targetEntityType: node
+cache: true

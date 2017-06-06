@@ -1,12 +1,12 @@
-uuid: c8863426-3633-411e-a7d5-fda7d688dd1e
+uuid: f1a019ac-752a-4db8-b4f1-d80dc0a11d4d
 langcode: en
 status: true
 dependencies:
   config:
-    - media_entity.bundle.swiper
-id: media.swiper.default
+    - media_entity.bundle.carousel
+id: media.carousel.default
 targetEntityType: media
-bundle: swiper
+bundle: carousel
 mode: default
 content:
   name:

@@ -1,18 +1,19 @@
-uuid: b2e90492-ac3d-4fd0-a91d-bb82f754bf51
+uuid: 8678da24-03e4-4ca8-926a-060904fe25fa
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.full
     - field.field.node.building_page.field_building
     - field.field.node.building_page.field_components
     - field.field.node.building_page.field_image
     - node.type.building_page
   module:
     - user
-id: node.building_page.default
+id: node.building_page.full
 targetEntityType: node
 bundle: building_page
-mode: default
+mode: full
 content: {  }
 hidden:
   field_building: true

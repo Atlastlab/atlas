@@ -4,13 +4,10 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Render\Element;
 
-
 /**
  * Implements hook_field_widget_form_alter().
  */
 function atlas_media_field_widget_form_alter(&$element, FormStateInterface $form_state, $context) {
-  return;
-
   $field_name = $context['items']->getName();
   $media_bundles_without_title = ['text'];
 
@@ -25,13 +22,13 @@ function atlas_media_field_widget_form_alter(&$element, FormStateInterface $form
   }
 
   if ($field_name == 'field_components') {
-    $element['#type'] = 'item';
+    $element['#type'] = 'container';
     $element['actions']['#type'] = 'fieldset';
+    $element['entities']['#table_fields']['label']['label'] = t('Name');
+    $element['entities']['#table_fields']['bundle']['label'] = t('Type');
     foreach (Element::children($element['entities']) as $delta) {
       hide($element['entities'][$delta]['options']['view_mode']);
       hide($element['entities'][$delta]['options']['css_class']);
-
-      $element['#attached']['library'][] = 'atlas_media/bricks';
 
       if (isset($element['entities'][$delta]['#entity']) && $element['entities'][$delta]['#entity']->bundle() == 'text') {
         $element['entities'][$delta]['#label'] = atlas_media_get_title_from_text_field($element['entities'][$delta]['#entity']);
@@ -58,5 +55,34 @@ function atlas_media_get_title_from_text_field($text_entity) {
 function atlas_media_media_presave(EntityInterface $entity) {
   if ($entity->bundle() == 'text') {
     $entity->name->value = atlas_media_get_title_from_text_field($entity);
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function atlas_media_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  atlas_media_place_field_in_sidebar('field_building', $form);
+  atlas_media_place_field_in_sidebar('field_image', $form);
+}
+
+function atlas_media_place_field_in_sidebar($field_name, &$form) {
+  if (isset($form[$field_name])) {
+    if (isset($form[$field_name]['widget']['#title'])) {
+      $title = &$form[$field_name]['widget']['#title'];
+    }
+
+    if (isset($form[$field_name]['widget'][0]['#title'])) {
+      $title = &$form[$field_name]['widget'][0]['#title'];
+    }
+
+    $form[$field_name]['#group'] = 'advanced';
+    $form[$field_name]['#open'] = FALSE;
+    $form[$field_name]['#type'] = 'details';
+
+    if (isset($title)) {
+      $form[$field_name]['#title'] = $title;
+      $title = '';
+    }
   }
 }

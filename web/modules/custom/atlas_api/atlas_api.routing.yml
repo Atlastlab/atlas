@@ -1,0 +1,7 @@
+api:
+  path: '/api/v1/{timestamp}'
+  defaults:
+    _controller: 'Drupal\atlas_api\Controller\Api::response'
+    timestamp: 0
+  requirements:
+    _permission: 'access content'

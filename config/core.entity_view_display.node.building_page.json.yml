@@ -1,0 +1,96 @@
+uuid: f26ade99-037b-4e4b-945d-872756a8d4f5
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.json
+    - field.field.node.building_page.field_building
+    - field.field.node.building_page.field_components
+    - field.field.node.building_page.field_image
+    - node.type.building_page
+  module:
+    - atlas_api
+    - ds
+    - image
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: ds_reset
+      library: null
+      disable_css: false
+      entity_classes: no_classes
+      settings:
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      ds_content:
+        - node_title
+        - field_image
+        - field_components
+        - field_building
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: above
+        formatter: default
+        settings:
+          wrapper: ''
+          class: ''
+          link: false
+        ft:
+          id: reset
+          settings:
+            lb: ''
+id: node.building_page.json
+targetEntityType: node
+bundle: building_page
+mode: json
+content:
+  field_building:
+    weight: 3
+    label: above
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: reset
+          settings:
+            lb: ''
+    type: property
+    region: ds_content
+  field_components:
+    type: property
+    weight: 2
+    region: ds_content
+    label: above
+    settings: {  }
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: reset
+          settings:
+            lb: ''
+  field_image:
+    weight: 1
+    label: above
+    settings:
+      image_style: ''
+    third_party_settings:
+      ds:
+        ft:
+          id: reset
+          settings:
+            lb: ''
+    type: image_url
+    region: ds_content
+hidden:
+  links: true

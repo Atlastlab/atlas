@@ -1,9 +1,12 @@
 uuid: 94e0a082-28b5-4f73-b016-218d794f17fd
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.building_page.field_building
+    - field.field.node.building_page.field_components
+    - field.field.node.building_page.field_image
     - node.type.building_page
   module:
     - user
@@ -15,4 +18,7 @@ content:
   links:
     weight: 100
     region: content
-hidden: {  }
+hidden:
+  field_building: true
+  field_components: true
+  field_image: true

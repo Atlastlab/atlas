@@ -1,10 +1,10 @@
-uuid: 64b7be00-e9d5-493b-b626-938bc0d5d424
+uuid: 473f56a7-5de0-4086-b0fc-5fb10bfcf3f0
 langcode: en
 status: true
 dependencies: {  }
-id: swiper
-label: Swiper
-description: 'Use this one if you want to have swipeable areas.'
+id: carousel
+label: Carousel
+description: 'May contain images, videos and teasers.'
 type: generic
 queue_thumbnail_downloads: false
 new_revision: false

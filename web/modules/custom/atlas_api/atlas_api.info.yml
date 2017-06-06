@@ -1,0 +1,6 @@
+name: Atlas Api
+description: Serves the whole backend data in one cachable response
+package: Atlas
+type: module
+version: '8.x-0.1'
+core: '8.x'

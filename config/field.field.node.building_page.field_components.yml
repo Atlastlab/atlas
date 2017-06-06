@@ -4,8 +4,8 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_components
+    - media_entity.bundle.carousel
     - media_entity.bundle.image
-    - media_entity.bundle.swiper
     - media_entity.bundle.text
     - node.type.building_page
   module:
@@ -24,8 +24,8 @@ settings:
   handler: 'default:media'
   handler_settings:
     target_bundles:
+      carousel: carousel
       image: image
-      swiper: swiper
       text: text
     sort:
       field: name

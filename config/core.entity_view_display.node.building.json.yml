@@ -1,12 +1,13 @@
-uuid: 00e43f93-61ad-449c-8473-2cb72718e493
+uuid: ae6cade5-2d32-4061-9f48-3c05b176c471
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.full
+    - core.entity_view_mode.node.json
     - field.field.node.building.field_geojson
     - node.type.building
   module:
+    - atlas_api
     - ds
     - user
 third_party_settings:
@@ -35,17 +36,30 @@ third_party_settings:
         weight: 0
         label: above
         formatter: default
-id: node.building.full
+        settings:
+          wrapper: ''
+          class: ''
+          link: false
+        ft:
+          id: reset
+          settings:
+            lb: ''
+id: node.building.json
 targetEntityType: node
 bundle: building
-mode: full
+mode: json
 content:
   field_geojson:
     weight: 1
     label: above
     settings: {  }
-    third_party_settings: {  }
-    type: basic_string
+    third_party_settings:
+      ds:
+        ft:
+          id: reset
+          settings:
+            lb: ''
+    type: property
     region: ds_content
 hidden:
   links: true
