@@ -1,12 +1,14 @@
-uuid: f43074a9-3045-4d13-b484-457497d234fe
+uuid: 5bb2552e-820a-4ed0-9209-0e9c838afbff
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_mode.media.json
-    - media_entity.bundle.carousel
+    - field.field.media.image.field_image
+    - media_entity.bundle.image
   module:
     - ds
+    - image
 third_party_settings:
   ds:
     layout:
@@ -25,22 +27,25 @@ third_party_settings:
           layout_class: {  }
     regions:
       ds_content:
-        - 'bundle_field:media'
-    fields:
-      'bundle_field:media':
-        plugin_id: 'bundle_field:media'
-        weight: 0
-        label: above
-        formatter: default
+        - field_image
+id: media.image.json
+targetEntityType: media
+bundle: image
+mode: json
+content:
+  field_image:
+    weight: 0
+    label: above
+    settings:
+      image_style: ''
+    third_party_settings:
+      ds:
         ft:
           id: reset
           settings:
-            lb: type
-id: media.carousel.json
-targetEntityType: media
-bundle: carousel
-mode: json
-content: {  }
+            lb: url
+    type: image_url
+    region: ds_content
 hidden:
   created: true
   name: true

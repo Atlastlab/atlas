@@ -33,7 +33,6 @@ class Api extends ControllerBase {
       ->condition('changed', $timestamp, '>');
     $media_ids = $query->execute();
 
-
     return [
       'node' => $node_ids,
       'media' => $media_ids
@@ -42,6 +41,7 @@ class Api extends ControllerBase {
 
   public function buildEntityFieldRenders($entity_ids_keyed_by_type) {
     $render = [];
+
     foreach ($entity_ids_keyed_by_type as $entity_type => $entity_ids) {
       $entity_storage = \Drupal::entityManager()->getStorage($entity_type);
       $entities = $entity_storage->loadMultiple($entity_ids);
@@ -58,27 +58,38 @@ class Api extends ControllerBase {
               $field_render['#label_display'] = 'hidden';
               $field_title = is_string($field_render['#title']) ? $field_render['#title'] : $field_render['#title']->render();
 
+              $entity_display_content = $entity_display->get('content');
+
+              if (isset($entity_display_content[$field_name]['third_party_settings']['ds']['ft']['settings']['lb']) && $entity_display_content[$field_name]['third_party_settings']['ds']['ft']['settings']['lb']) {
+                $field_title = $entity_display_content[$field_name]['third_party_settings']['ds']['ft']['settings']['lb'];
+              }
+
               if (isset($field_render[0]['#json'])) {
                 foreach (Element::children($field_render) as $field_render_delta) {
                   $field_render_item = $field_render[$field_render_delta];
-                  $render[$entity_type][(int) $entity->id()][Html::getClass($field_title)][$field_render_delta] = $field_render_item['#json'];
+                  $render[$entity->bundle()][(int) $entity->id()][Html::getClass($field_title)][$field_render_delta] = $field_render_item['#json'];
                 }
               }
               else {
-                $render[$entity_type][(int) $entity->id()][Html::getClass($field_title)] = trim(render($field_render));
+                $render[$entity->bundle()][(int) $entity->id()][Html::getClass($field_title)] = trim(render($field_render));
               }
             }
             else {
               $field = $ds_fields[$field_name];
-              $field_instance = Ds::getFieldInstance($field_name, $field, $entity, 'json', $entity_display, []);
+              $field_instance = Ds::getFieldInstance($field_name, $field, $entity, 'json', $entity_display);
               $field_value = $field_instance->build();
-              $field_title = is_string($field_instance->getTitle()) ? $field_instance->getTitle() : $field_instance->getTitle()->render();
-              $render[$entity_type][(int) $entity->id()][Html::getClass($field_title)] = trim(render($field_value));
+              $field_title = is_string($field_instance->getTitle()) ? $field_instance->getTitle() : $field_instance->getTitle()
+                ->render();
+
+              if (isset($configuration['fields'][$field_name]['ft']['settings']['lb']) && $configuration['fields'][$field_name]['ft']['settings']['lb']) {
+                $field_title = $configuration['fields'][$field_name]['ft']['settings']['lb'];
+              }
+
+              $render[$entity->bundle()][(int) $entity->id()][Html::getClass($field_title)] = trim(render($field_value));
             }
           }
         }
       }
-
     }
 
     return $render;
