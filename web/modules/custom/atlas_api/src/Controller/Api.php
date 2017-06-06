@@ -16,17 +16,28 @@ class Api extends ControllerBase {
   public function response($timestamp) {
     $entity_ids_keyed_by_type = $this->getEntityIdsKeyedByType($timestamp);
     $render = $this->buildEntityFieldRenders($entity_ids_keyed_by_type);
-    return new JsonResponse($render);
+
+    $response = new JsonResponse($render);
+    $response->headers->set('Access-Control-Allow-Origin', '*');
+    return $response;
   }
 
   public function getEntityIdsKeyedByType($timestamp) {
     $query = \Drupal::entityQuery('node')
       ->condition('status', 1)
     ->condition('changed', $timestamp, '>');
-
     $node_ids = $query->execute();
 
-    return ['node' => $node_ids];
+    $query = \Drupal::entityQuery('media')
+      ->condition('status', 1)
+      ->condition('changed', $timestamp, '>');
+    $media_ids = $query->execute();
+
+
+    return [
+      'node' => $node_ids,
+      'media' => $media_ids
+    ];
   }
 
   public function buildEntityFieldRenders($entity_ids_keyed_by_type) {
@@ -40,27 +51,30 @@ class Api extends ControllerBase {
         $entity_display = entity_get_display($entity_type, $entity->bundle(), 'json');
         $configuration = $entity_display->getThirdPartySettings('ds');
 
-        foreach ($configuration['regions']['ds_content'] as $field_name) {
-          if (isset($entity->{$field_name})) {
-            $field_render = $entity->{$field_name}->view('json');
-            $field_render['#label_display'] = 'hidden';
-            if (isset($field_render[0]['#json'])) {
+        if (isset($configuration['regions'])) {
+          foreach ($configuration['regions']['ds_content'] as $field_name) {
+            if (isset($entity->{$field_name})) {
+              $field_render = $entity->{$field_name}->view('json');
+              $field_render['#label_display'] = 'hidden';
+              $field_title = is_string($field_render['#title']) ? $field_render['#title'] : $field_render['#title']->render();
 
-              foreach (Element::children($field_render) as $field_render_delta) {
-                $field_render_item = $field_render[$field_render_delta];
-                $render[$entity_type][(int) $entity->id()][Html::getClass($field_render['#title'])][$field_render_delta] = $field_render_item['#json'];
+              if (isset($field_render[0]['#json'])) {
+                foreach (Element::children($field_render) as $field_render_delta) {
+                  $field_render_item = $field_render[$field_render_delta];
+                  $render[$entity_type][(int) $entity->id()][Html::getClass($field_title)][$field_render_delta] = $field_render_item['#json'];
+                }
+              }
+              else {
+                $render[$entity_type][(int) $entity->id()][Html::getClass($field_title)] = trim(render($field_render));
               }
             }
             else {
-              $render[$entity_type][(int) $entity->id()][Html::getClass($field_render['#title'])] = trim(render($field_render));
+              $field = $ds_fields[$field_name];
+              $field_instance = Ds::getFieldInstance($field_name, $field, $entity, 'json', $entity_display, []);
+              $field_value = $field_instance->build();
+              $field_title = is_string($field_instance->getTitle()) ? $field_instance->getTitle() : $field_instance->getTitle()->render();
+              $render[$entity_type][(int) $entity->id()][Html::getClass($field_title)] = trim(render($field_value));
             }
-          }
-          else {
-            $field = $ds_fields[$field_name];
-            $field_instance = Ds::getFieldInstance($field_name, $field, $entity, 'json', $entity_display, []);
-            $field_value = $field_instance->build();
-            $field_title = $field_instance->getTitle();
-            $render[$entity_type][(int) $entity->id()][Html::getClass($field_title->render())] = trim(render($field_value));
           }
         }
       }

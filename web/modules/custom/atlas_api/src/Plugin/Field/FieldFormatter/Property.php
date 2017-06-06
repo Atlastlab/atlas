@@ -31,11 +31,29 @@ class Property extends FormatterBase {
       if ($json = json_decode($item->value, TRUE)) {
         $element[$delta]['#json'] = $json;
       }
-      elseif (isset($item->entity)) {
-        $element[$delta]['#json'] = (int) $item->entity->id();
-      }
       else {
-        $element[$delta]['#markup'] = $item->value;
+        $element[$delta]['#json'] = $item->getValue();
+
+        if (isset($element[$delta]['#json']['target_id'])) {
+          $element[$delta]['#json']['target_id'] = (int) $element[$delta]['#json']['target_id'];
+        }
+
+        if (isset($element[$delta]['#json']['depth'])) {
+          $element[$delta]['#json']['depth'] = (int) $element[$delta]['#json']['depth'];
+        }
+
+        if (isset($element[$delta]['#json']['options']) && $element[$delta]['#json']['options'] == [
+            'view_mode' => '',
+            'css_class' => ''
+          ]
+        ) {
+          unset($element[$delta]['#json']['options']);
+        }
+
+        // Cleaning up entity references.
+        if (isset($element[$delta]['#json']['target_id']) && count($element[$delta]['#json']) == 1) {
+          $element[$delta]['#json'] = (int) $element[$delta]['#json']['target_id'];
+        }
       }
     }
 

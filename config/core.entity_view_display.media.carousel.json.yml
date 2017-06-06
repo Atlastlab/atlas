@@ -1,0 +1,84 @@
+uuid: f43074a9-3045-4d13-b484-457497d234fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.json
+    - media_entity.bundle.carousel
+  module:
+    - ds
+third_party_settings:
+  ds:
+    layout:
+      id: ds_reset
+      library: null
+      disable_css: false
+      entity_classes: no_classes
+      settings:
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      ds_content:
+        - name
+        - 'bundle_field:media'
+    fields:
+      'bundle_field:media':
+        plugin_id: 'bundle_field:media'
+        weight: 1
+        label: above
+        formatter: default
+        ft:
+          id: reset
+          settings:
+            lb: type
+id: media.carousel.json
+targetEntityType: media
+bundle: carousel
+mode: json
+content:
+  name:
+    label: above
+    type: string
+    weight: 0
+    region: ds_content
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      ds:
+        ft:
+          id: expert
+          settings:
+            lb: title
+            prefix: ''
+            lbw-el: ''
+            lbw-cl: ''
+            lbw-at: ''
+            ow-el: ''
+            ow-cl: ''
+            ow-at: ''
+            fis-el: ''
+            fis-cl: ''
+            fis-at: ''
+            fi-el: ''
+            fi-cl: ''
+            fi-at: ''
+            suffix: ''
+            lbw: false
+            lb-col: false
+            ow: false
+            ow-def-at: false
+            ow-def-cl: false
+            fis: false
+            fis-def-at: false
+            fi: false
+            fi-def-at: false
+hidden:
+  created: true
+  thumbnail: true
+  uid: true
