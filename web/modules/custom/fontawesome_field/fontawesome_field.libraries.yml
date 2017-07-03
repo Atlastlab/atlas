@@ -1,0 +1,27 @@
+fontawesome:
+  version: VERSION
+  css:
+    theme:
+      https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css: { type: external, minified: true }
+
+admin:
+  version: VERSION
+  js:
+    js/admin.js: {}
+    js/select2.js: {}
+  css:
+    theme:
+      css/admin.css: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery.once
+
+select2:
+  version: VERSION
+  js:
+    https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.min.js: { type: external, minified: true }
+  css:
+    theme:
+      https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css: { type: external, minified: true }

@@ -1,0 +1,44 @@
+uuid: b15d2eae-90da-4cb6-beb8-14a22ba17d4f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.json
+    - field.field.node.instance.field_bounding_box
+    - node.type.instance
+  module:
+    - atlas_api
+    - ds
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: ds_reset
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        classes: {  }
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+    regions:
+      ds_content:
+        - field_bounding_box
+id: node.instance.json
+targetEntityType: node
+bundle: instance
+mode: json
+content:
+  field_bounding_box:
+    type: property
+    weight: 0
+    region: ds_content
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  links: true

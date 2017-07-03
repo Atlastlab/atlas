@@ -1,0 +1,84 @@
+<?php
+
+/**
+ * @file
+ * Contains fontawesome_field.module..
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Symfony\Component\Yaml\Yaml;
+
+/**
+ * Implements hook_help().
+ */
+function fontawesome_field_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the fontawesome_field module.
+    case 'help.page.fontawesome_field':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Icon picker field for Fontawesome') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+
+/**
+ * @param $type
+ * @return array
+ */
+function fontawesome_field_get_option_list($type, $subset = null) {
+  $raw = fontawesome_field_known_sets($type, $subset);
+
+  $options = array(0 => '');
+  $pattern = array('/^fa-/','/-o$/','/-/','/ o /','/~(.+)$/');
+  $replace = array('',' (open)',' ',' (open~',', $1)');
+  if(!$subset) {
+    foreach($raw as $optgroup_label => $optgroup) {
+      foreach($optgroup as $k => $v) {
+        $options[$optgroup_label][$v] = preg_replace($pattern, $replace, $v);
+      }
+    }
+  }
+  else {
+    foreach($raw as $k => $v) {
+      $options[$v] = preg_replace($pattern, $replace, $v);
+    }
+  }
+
+  //dpm($options);
+  return $options;
+}
+
+/**
+ * @param null $type
+ * @return array
+ */
+function fontawesome_field_known_sets($type = null, $subset = null) {
+  $sets = array();
+
+  $icon_data = file_get_contents(dirname(__FILE__).'/icons.yml');
+  $icons = Yaml::parse($icon_data);
+  
+  $categories = [];
+  foreach ($icons['icons'] as $i) {
+    foreach ($i['categories'] as $c) {
+      if (!isset($categories[$c])) {
+        $categories[$c] = array();
+      }
+      $categories[$c][] = 'fa-' . $i['id'];
+    }
+  }
+  $sets = array('icons' => $categories);
+
+  if($type && $subset) {
+    return $sets[$type][$subset];
+  }
+  elseif($type && !$subset) {
+    return $sets[$type];
+  }
+
+  return $sets;
+}

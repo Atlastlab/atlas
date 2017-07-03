@@ -15,7 +15,8 @@ use Drupal\Core\Field\FormatterBase;
  *     "link",
  *     "string_long",
  *     "entity_reference",
- *     "bricks"
+ *     "bricks",
+ *     "bbox"
  *   }
  * )
  */
@@ -40,6 +41,7 @@ class Property extends FormatterBase {
 
         if (isset($element[$delta]['#json']['depth'])) {
           $element[$delta]['#json']['depth'] = (int) $element[$delta]['#json']['depth'];
+          $element[$delta]['#json']['type'] = $item->entity->bundle();
         }
 
         if (isset($element[$delta]['#json']['options']) && $element[$delta]['#json']['options'] == [

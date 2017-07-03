@@ -8,6 +8,7 @@ dependencies:
     - node.type.building
   module:
     - ds
+    - geojson_mapbox_gl
     - user
 third_party_settings:
   ds:
@@ -45,7 +46,7 @@ content:
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: basic_string
+    type: geojson_mapbox_gl
     region: ds_content
 hidden:
   links: true

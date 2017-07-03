@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.media.json
     - field.field.media.image.field_image
+    - image.style.large
     - media_entity.bundle.image
   module:
     - ds
@@ -37,7 +38,7 @@ content:
     weight: 0
     label: above
     settings:
-      image_style: ''
+      image_style: large
     third_party_settings:
       ds:
         ft:

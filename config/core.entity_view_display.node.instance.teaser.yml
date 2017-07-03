@@ -1,0 +1,20 @@
+uuid: d5d62c00-123e-45fd-8544-557e91cb0814
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.instance.field_bounding_box
+    - node.type.instance
+  module:
+    - user
+id: node.instance.teaser
+targetEntityType: node
+bundle: instance
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_bounding_box: true

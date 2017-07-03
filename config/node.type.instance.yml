@@ -1,0 +1,11 @@
+uuid: 8dc06223-29ee-4619-a76b-936627bbaf8d
+langcode: en
+status: true
+dependencies: {  }
+name: 'Atlast Instance'
+type: instance
+description: 'A camping, an entertainment park or a museum.'
+help: ''
+new_revision: true
+preview_mode: 0
+display_submitted: false

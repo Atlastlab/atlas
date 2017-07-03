@@ -1,6 +1,7 @@
 module:
   atlas_api: 0
   atlas_media: 0
+  bbox: 0
   block: 0
   breakpoint: 0
   bricks: 0
@@ -18,6 +19,7 @@ module:
   field_ui: 0
   file: 0
   filter: 0
+  fontawesome_field: 0
   geojson_mapbox_gl: 0
   image: 0
   inline_entity_form: 0

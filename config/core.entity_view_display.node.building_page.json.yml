@@ -6,11 +6,14 @@ dependencies:
     - core.entity_view_mode.node.json
     - field.field.node.building_page.field_building
     - field.field.node.building_page.field_components
+    - field.field.node.building_page.field_icon
     - field.field.node.building_page.field_image
+    - image.style.large
     - node.type.building_page
   module:
     - atlas_api
     - ds
+    - fontawesome_field
     - image
     - user
 third_party_settings:
@@ -35,6 +38,7 @@ third_party_settings:
         - field_image
         - field_components
         - field_building
+        - field_icon
     fields:
       node_title:
         plugin_id: node_title
@@ -79,11 +83,23 @@ content:
           id: reset
           settings:
             lb: ''
+  field_icon:
+    type: fontawesome_field_class
+    weight: 4
+    region: ds_content
+    label: above
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: reset
+          settings:
+            lb: ''
   field_image:
     weight: 1
     label: above
     settings:
-      image_style: ''
+      image_style: large
     third_party_settings:
       ds:
         ft:

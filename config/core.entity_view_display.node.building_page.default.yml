@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.building_page.field_building
     - field.field.node.building_page.field_components
+    - field.field.node.building_page.field_icon
     - field.field.node.building_page.field_image
     - node.type.building_page
   module:
@@ -17,5 +18,6 @@ content: {  }
 hidden:
   field_building: true
   field_components: true
+  field_icon: true
   field_image: true
   links: true

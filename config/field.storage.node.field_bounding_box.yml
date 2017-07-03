@@ -1,0 +1,19 @@
+uuid: 7414a594-d628-48a8-a46f-d55a938362de
+langcode: en
+status: true
+dependencies:
+  module:
+    - bbox
+    - node
+id: node.field_bounding_box
+field_name: field_bounding_box
+entity_type: node
+type: bbox
+settings: {  }
+module: bbox
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

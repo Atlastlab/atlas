@@ -1,0 +1,15 @@
+field.field_settings.fontawesome_field:
+  type: mapping
+  label: 'Fontawesome settings'
+
+field.value.fontawesome_field:
+  type: mapping
+  label: 'Default value'
+  mapping:
+    class:
+      type: string
+      label: 'Icon class'
+
+field.formatter.settings.fontawesome_field_class:
+  type: mapping
+  label: 'Icon class'

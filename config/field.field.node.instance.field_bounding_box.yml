@@ -1,0 +1,26 @@
+uuid: e59acb2a-0591-4cb0-8c4f-1fbc1a96f855
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bounding_box
+    - node.type.instance
+  module:
+    - bbox
+id: node.instance.field_bounding_box
+field_name: field_bounding_box
+entity_type: node
+bundle: instance
+label: 'Geographical Bounding Box'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    northeast_lng: '0'
+    northeast_lat: '0'
+    southwest_lng: '0'
+    southwest_lat: '0'
+default_value_callback: ''
+settings: {  }
+field_type: bbox

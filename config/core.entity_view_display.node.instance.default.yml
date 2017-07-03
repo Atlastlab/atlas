@@ -1,0 +1,26 @@
+uuid: 3d3ae392-867d-4757-9a79-89149cae14e4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.instance.field_bounding_box
+    - field.field.node.instance.field_map_url
+    - node.type.instance
+  module:
+    - user
+id: node.instance.default
+targetEntityType: node
+bundle: instance
+mode: default
+content:
+  field_map_url:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  field_bounding_box: true
+  links: true

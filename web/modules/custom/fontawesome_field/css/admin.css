@@ -1,0 +1,49 @@
+.font-awesome-field-admin-wrapper {
+  overflow: hidden;
+  border: solid 1px #CCC;
+  padding: 12px;
+}
+
+.font-awesome-field-admin-wrapper fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.font-awesome-field-admin-wrapper fieldset .fieldset-wrapper {
+  padding: 0;
+}
+
+
+.font-awesome-field-admin-wrapper fieldset legend span.fieldset-legend {
+  text-transform: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.font-awesome-field-admin-wrapper {
+  clear: both;
+  overflow: hidden;
+}
+
+.font-awesome-field-admin-wrapper .container {
+  float: left;
+  margin-right: 25px;
+}
+
+.font-awesome-field-admin-wrapper .container .form-item {
+  margin: 0;
+  padding: 0;
+}
+
+.font-awesome-field-admin-wrapper .fontawesome-icon-preview {
+  text-align: center;
+  padding: 3px 6px;
+  min-width: 20px;
+  margin-top: 10px;
+}
+
+.font-awesome-field-admin-wrapper .fontawesome-icon-preview i {
+  font-size: 1.2rem;
+}

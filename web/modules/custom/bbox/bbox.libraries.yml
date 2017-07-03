@@ -1,0 +1,28 @@
+leaflet:
+  version: VERSION
+  css:
+    base:
+      /libraries/leaflet-dist/leaflet.css: {}
+      /libraries/leaflet.draw/dist/leaflet.draw.css: {}
+  js:
+    /libraries/leaflet-dist/leaflet-src.js: {}
+    /libraries/leaflet.draw/dist/leaflet.draw-src.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings
+
+field:
+  version: VERSION
+  js:
+    js/field.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings
+
+views:
+  version: VERSION
+  js:
+    js/views.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings

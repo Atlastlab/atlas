@@ -1,0 +1,68 @@
+uuid: 52f41099-0972-4840-b359-64a452cdeee3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.instance.field_bounding_box
+    - field.field.node.instance.field_map_url
+    - node.type.instance
+  module:
+    - bbox
+id: node.instance.default
+targetEntityType: node
+bundle: instance
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_bounding_box:
+    weight: 2
+    settings:
+      map: 'https://tilemill.studiofonkel.nl/style/{z}/{x}/{y}.png?id=tmstyle:///home/administrator/styles/haringvliet/base.tm2'
+    third_party_settings: {  }
+    type: bbox_leaflet_draw
+    region: content
+  field_map_url:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 5
+    region: content
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 6
+    region: content
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 3
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    region: content
+    third_party_settings: {  }
+hidden: {  }
