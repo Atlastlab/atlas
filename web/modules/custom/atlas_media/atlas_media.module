@@ -37,12 +37,15 @@ function atlas_media_field_widget_form_alter(&$element, FormStateInterface $form
   }
 }
 
+/**
+ * Reduces a long text to a small title.
+ */
 function atlas_media_get_title_from_text_field($text_entity) {
   $text = $text_entity->field_text->value;
   $cleaned_text = strip_tags($text);
   $title = $cleaned_text;
 
-  if (count($cleaned_text) > 60) {
+  if (strlen($cleaned_text) > 60) {
     $title .= '...';
   }
 
@@ -66,6 +69,9 @@ function atlas_media_form_alter(&$form, FormStateInterface $form_state, $form_id
   atlas_media_place_field_in_sidebar('field_image', $form);
 }
 
+/**
+ * Implements hook_form_alter().
+ */
 function atlas_media_place_field_in_sidebar($field_name, &$form) {
   if (isset($form[$field_name])) {
     if (isset($form[$field_name]['widget']['#title'])) {

@@ -15,3 +15,10 @@ effects:
       width: 480
       height: 480
       upscale: false
+  5b8623d1-6e29-459d-810b-a356e6758c9d:
+    uuid: 5b8623d1-6e29-459d-810b-a356e6758c9d
+    id: image_scale_and_crop
+    weight: 2
+    data:
+      width: 480
+      height: 300

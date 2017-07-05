@@ -26,9 +26,9 @@ class GeoJSONMapboxGL extends FormatterBase {
     $element = [
       '#attached' => [
         'library' => [
-          'geojson_mapbox_gl/formatter'
-        ]
-      ]
+          'geojson_mapbox_gl/formatter',
+        ],
+      ],
     ];
 
     foreach ($items as $delta => $item) {
@@ -38,8 +38,8 @@ class GeoJSONMapboxGL extends FormatterBase {
         '#attributes' => [
           'id' => Html::getUniqueId('geojson_mapbox_gl'),
           'data-geojson' => base64_encode($item->value),
-          'style' => 'height: 400px; width: 700px;'
-        ]
+          'style' => 'height: 400px; width: 700px;',
+        ],
       ];
     }
 

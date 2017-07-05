@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.json
     - field.field.node.instance.field_bounding_box
+    - field.field.node.instance.field_map_url
     - node.type.instance
   module:
     - atlas_api
@@ -18,15 +19,17 @@ third_party_settings:
       disable_css: false
       entity_classes: all_classes
       settings:
-        classes: {  }
         wrappers:
           ds_content: div
         outer_wrapper: div
         attributes: ''
         link_attribute: ''
         link_custom: ''
+        classes:
+          layout_class: {  }
     regions:
       ds_content:
+        - field_map_url
         - field_bounding_box
 id: node.instance.json
 targetEntityType: node
@@ -35,10 +38,23 @@ mode: json
 content:
   field_bounding_box:
     type: property
-    weight: 0
+    weight: 1
     region: ds_content
     label: above
     settings: {  }
     third_party_settings: {  }
+  field_map_url:
+    type: string
+    weight: 0
+    region: ds_content
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      ds:
+        ft:
+          id: reset
+          settings:
+            lb: map
 hidden:
   links: true

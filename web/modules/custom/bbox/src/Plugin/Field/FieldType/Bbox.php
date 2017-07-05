@@ -1,14 +1,8 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\bbox\Plugin\Field\FieldType\Bbox.
- */
-
 namespace Drupal\bbox\Plugin\Field\FieldType;
 
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
-use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Field\FieldItemBase;
 use Drupal\Core\TypedData\DataDefinition;
 
@@ -44,7 +38,7 @@ class Bbox extends FieldItemBase {
         'southwest_lat' => array(
           'type' => 'float',
         ),
-      )
+      ),
     );
   }
 
@@ -56,6 +50,7 @@ class Bbox extends FieldItemBase {
 
     return $constraints;
   }
+
   /**
    * {@inheritdoc}
    */
@@ -85,4 +80,5 @@ class Bbox extends FieldItemBase {
   public function isEmpty() {
     return FALSE;
   }
+
 }
